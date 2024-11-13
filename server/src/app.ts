@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors"
 import authRouters from "./routes/authRoute";
+import  missileRoute from "./routes/missileRoute"
 import connectDb from "./config/db";
 
 dotenv.config();
@@ -17,7 +18,7 @@ connectDb();
 // Routes
 
 
-app.use("/api", authRouters);   
+app.use("/api", authRouters, missileRoute);     
 
 // Error handling middleware
 
