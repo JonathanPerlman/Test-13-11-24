@@ -1,10 +1,12 @@
 import  express from "express";
 import { login, register } from "../controllers/authControoler";
-import {getMissileResources} from "../controllers/missileController";
+import {getOrganization} from "../controllers/organizationController";
+import { getAttackData } from "../controllers/attackController";
 
 const router = express.Router();
 
-router.route("/getMissileResources").post(getMissileResources);
+router.route("/defends").post(getOrganization);
+router.route("/attack").post(getAttackData);
 // router.route("/candidates").get(getAllCandidates);
 
 export default router

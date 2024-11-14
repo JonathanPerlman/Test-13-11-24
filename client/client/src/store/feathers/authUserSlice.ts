@@ -21,7 +21,7 @@ const initialState: UserState = {
 };
 
 export const registerUser = createAsyncThunk(
-  'voter/registerUser',
+  'user/registerUser',
   async (userData: { username: string; password: string; organization: string; region: string }, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/api/register', userData);
@@ -33,14 +33,14 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk<LoginResponse, { username: string; password: string }>(
-  'voter/loginUser',
+  'user/loginUser',
   async (loginData, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/api/login', loginData);
-      localStorage.setItem("token", response.data.token);      
+      localStorage.setItem("token", response.data.data);      
       console.log(response.data.data);
       
-      return  response.data.data; 
+      return response.data.data; 
     }   
      catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.message);

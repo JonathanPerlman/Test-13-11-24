@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import User from "../models/user";
 import Organization from "../models/organization";
 
-export const getMissileResources = async (req: Request, res: Response): Promise<void> => {
+export const getOrganization = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id, organization, region } = req.body;
 
@@ -12,15 +12,24 @@ export const getMissileResources = async (req: Request, res: Response): Promise<
             return;
         }
 
+        // let on = "";
+        // if(region === ""){
+
+        //     on =organization
+        // }
+        // else{
+        //     on = `${organization} - ${region}`
+        // }
         if (region === "") {
             const orgData = await Organization.findOne({ name: organization })
             if (!orgData) {
                 res.status(404).json({ message: "Organization not found or region mismatch", success: false });
                 return;
             }
-            const totalResources = orgData.resources.reduce((total, resource) => total + resource.amount, 0);
+            // const totalResources = orgData.resources.reduce((total, resource) => total + resource.amount, 0);
+
             res.status(200).json({
-                data: { resources: orgData.resources, totalAmount: totalResources },
+                data: orgData,
                 success: true
             });
         }
@@ -32,9 +41,11 @@ export const getMissileResources = async (req: Request, res: Response): Promise<
                 res.status(404).json({ message: "Organization not found or region mismatch", success: false });
                 return;
             }
-            const totalResources = orgData.resources.reduce((total, resource) => total + resource.amount, 0);
+
+            // const totalResources = orgData.resources.reduce((total, resource) => total + resource.amount, 0);
+
             res.status(200).json({
-                data: { resources: orgData.resources, totalAmount: totalResources },
+                data: orgData,
                 success: true
             });
         }

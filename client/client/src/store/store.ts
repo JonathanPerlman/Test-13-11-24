@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./feathers/authUserSlice"
+// import defendSlice from "./feathers/Defend"
+import organizationSlice from "./feathers/organization";
 
 export const store = configureStore({
     reducer: {
         user: userSlice,
-        // candidates: candidatesSlice
+        // defends: defendSlice,
+        organization: organizationSlice
     }
 })
 

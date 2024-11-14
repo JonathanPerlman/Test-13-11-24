@@ -1,0 +1,73 @@
+/* src/components/LoginForm.css */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 2rem auto;
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .login-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .register-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  
