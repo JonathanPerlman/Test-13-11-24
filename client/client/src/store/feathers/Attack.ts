@@ -3,46 +3,44 @@ import axios from 'axios';
 
 interface Attack {
   name: string;
-  description: string,
-  speed: number,
-  intercepts: string[],
-  amount: number
+  description: string;
+  speed: number;
+  intercepts: string[];
+  amount: number;
 }
 
-
-
-interface attackState {
-  defends: Attack[] | null;
+interface AttackState {
+  attack: Attack[] | null; 
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
-const initialState: attackState = {
-    defends: null,
+const initialState: AttackState = {
+  attack: null,  
   status: 'idle',
   error: null,
 };
 
 export const getAttackData = createAsyncThunk(
-  'Attack/fetchAttack',
-  async (AttackData: { attackName: string }, thunkAPI) => {
+  'attack/fetchAttack',
+  async (AttackData: { name: string }, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/api/attack', AttackData);
-      console.log(response.data.data);
+      // console.log(response.data);
       
-      return response.data.data; 
+      return response.data; 
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.message); 
     }
   }
 );
 
-const defendSlice = createSlice({
+const attackSlice = createSlice({
   name: 'attack',
   initialState,
   reducers: {
-    clearMissiles : (state) => {
-      state.defends = null;
+    clearMissiles: (state) => {
+      state.attack = null;  
       state.status = 'idle';
       state.error = null;
     },
@@ -54,7 +52,7 @@ const defendSlice = createSlice({
       })
       .addCase(getAttackData.fulfilled, (state, action: PayloadAction<Attack[]>) => {
         state.status = 'succeeded';
-        state.defends = action.payload;
+        state.attack = action.payload; 
         state.error = null;
       })
       .addCase(getAttackData.rejected, (state, action: PayloadAction<any>) => {
@@ -64,5 +62,5 @@ const defendSlice = createSlice({
   },
 });
 
-export const { clearMissiles } = defendSlice.actions;
-export default defendSlice.reducer;
+export const { clearMissiles } = attackSlice.actions;
+export default attackSlice.reducer;

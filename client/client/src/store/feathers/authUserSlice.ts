@@ -25,7 +25,6 @@ export const registerUser = createAsyncThunk(
   async (userData: { username: string; password: string; organization: string; region: string }, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/api/register', userData);
-      console.log(response.data);
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
@@ -38,7 +37,6 @@ export const loginUser = createAsyncThunk<LoginResponse, { username: string; pas
     try {
       const response = await axios.post('http://localhost:3000/api/login', loginData);
       localStorage.setItem("token", response.data.data);      
-      console.log(response.data.data);
       
       return response.data.data; 
     }   

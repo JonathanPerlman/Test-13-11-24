@@ -5,28 +5,12 @@ import Missile from "../models/missiles";
 
 export const getAttackData = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { attackName } = req.body;
-        console.log(attackName);
-        
-        const data = await Missile.findOne({ name: attackName})
-        console.log(data);
-        
+        const { name } = req.body;
 
-        if(!data){
-            res.status(404).json({ message: "Organization not found", success: false });
-            return;
-        }
+        const missileDetails = await Missile.find({ name: name});
 
-        const attackResponse = {
-            name: data.name,
-            speed: data.speed
-        }
-
-        res.status(200).json({
-            data: attackResponse
-        })
-        
+        res.status(200).json(missileDetails);
     } catch (error) {
-        res.status(500).json({ message: "Something went wrong", success: false });
+         res.status(500).json({ message: 'Server error', error });
     }
 };
