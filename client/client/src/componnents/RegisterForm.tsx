@@ -1,4 +1,3 @@
-// src/components/RegisterForm.tsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "./RegisterForm.css";

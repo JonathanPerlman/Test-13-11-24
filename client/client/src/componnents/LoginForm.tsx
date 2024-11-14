@@ -1,4 +1,3 @@
-// src/components/LoginForm.tsx
 import React, { FC, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import "./LoginForm.css";

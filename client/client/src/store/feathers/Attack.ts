@@ -26,7 +26,6 @@ export const getAttackData = createAsyncThunk(
   async (AttackData: { name: string }, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/api/attack', AttackData);
-      // console.log(response.data);
       
       return response.data; 
     } catch (error: any) {

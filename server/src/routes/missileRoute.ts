@@ -7,6 +7,5 @@ const router = express.Router();
 
 router.route("/defends").post(getOrganization);
 router.route("/attack").post(getAttackData);
-// router.route("/candidates").get(getAllCandidates);
 
 export default router

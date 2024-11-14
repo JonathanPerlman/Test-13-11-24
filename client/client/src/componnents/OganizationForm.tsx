@@ -38,7 +38,7 @@ const OrganizationForm: React.FC<CandidatesListProps> = ({ organization, isLocat
 
     const handleMissileClick = async (missileName: string) => {
         try {
-            const result = await dispatch(getAttackData({ name: missileName })).unwrap();
+            const result = await dispatch(getAttackData({name: missileName })).unwrap();
             setMissileData((prevData) => {
                 return [...prevData, result[0]];
             });
