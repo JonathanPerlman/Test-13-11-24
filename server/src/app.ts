@@ -16,9 +16,11 @@ app.use(cors());
 connectDb();
 
 // Routes
+  
+
+app.use("/api", authRouters, missileRoute);
 
 
-app.use("/api", authRouters, missileRoute);     
 
 // Error handling middleware
 

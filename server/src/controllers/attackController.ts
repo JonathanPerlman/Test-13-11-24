@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user";
-import Organization from "../models/organization";
+import Organization from "../models/organizationfjhfhjfhjfhj";
 import Missile from "../models/missiles";
 
 export const getAttackData = async (req: Request, res: Response): Promise<void> => {
